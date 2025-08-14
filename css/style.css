@@ -47,3 +47,20 @@ footer{border-top:1px solid var(--border);margin-top:56px;padding:22px 0;color:v
   .grid2{grid-template-columns:1fr}
   .grid3{grid-template-columns:1fr}
 }
+.hero.single-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.hero.single-column h1 {
+  text-align: center; /* 如果你想让标题居中 */
+}
+.teaser {
+  background: #000;
+  width: 100%;
+}
+.teaser img {
+  width: 100%;
+  height: auto; /* 保证等比例显示 */
+  object-fit: contain;
+}

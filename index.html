@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>古籍文档理解 – 项目主页</title>
-  <meta name="description" content="古籍文档理解/零样本汉字识别项目主页（可直接用于 GitHub Pages）。" />
+  <title>AncientDoc – Chinese Ancient Documents Benchmark</title>
+  <meta name="description" content="AncientDoc：面向中文古籍的多任务基准，从整页OCR到知识推理，系统评估视觉-语言模型能力。" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -14,13 +14,14 @@
       <div class="logo"></div>
       <a href="#top">项目主页</a>
       <a href="#abstract">摘要</a>
-      <a href="#motivation">动机</a>
-      <a href="#method">方法</a>
-      <a href="#results">实验</a>
+      <a href="#tasks">任务</a>
+      <a href="#dataset">数据集</a>
+      <a href="#metrics">评测指标</a>
+      <a href="#results">实验结果</a>
       <a href="#bibtex">BibTeX</a>
     </div>
     <div class="right">
-      <span class="pill">v1.0</span>
+      <span class="pill">AncientDoc v1.0</span>
     </div>
   </nav>
 </header>
@@ -28,112 +29,155 @@
 <main id="top">
   <section class="hero">
     <div>
-      <h1>古籍文档理解 / 零样本汉字识别（项目标题示例）</h1>
-      <div class="subtitle">一句话：用细粒度先验与图文对齐，实现对古籍字符在长尾与异体字条件下的鲁棒识别。</div>
+      <h1>Benchmarking Vision-Language Models on Chinese Ancient Documents: From OCR to Knowledge Reasoning</h1>
+      <div class="subtitle">我们提出 <strong>AncientDoc</strong>——首个面向中文古籍的多任务基准，覆盖 <strong>整页 OCR</strong>、<strong>白话翻译</strong>、<strong>推理问答</strong>、<strong>知识问答</strong> 与 <strong>语言变体问答</strong> 五大任务，系统评估主流 VLM 在古籍场景下从识别到理解再到知识推理的全链路能力。</div>
       <div class="badges">
         <a class="btn" href="#" target="_blank">📄 论文</a>
         <a class="btn ghost" href="#" target="_blank">💻 代码</a>
         <a class="btn ghost" href="#" target="_blank">🧾 数据集</a>
         <a class="btn ghost" href="#" target="_blank">🧠 模型权重</a>
       </div>
-      <div class="card"><strong>TL;DR：</strong> 简洁明快地用 1–2 句总结你的方法和优势。</div>
+      <div class="card"><strong>TL;DR：</strong> AncientDoc 覆盖 14 类古籍、100+ 本书、约 3,000 页；在五项任务上采用多指标并辅以与人类一致的 LLM 评分进行评估，填补古籍领域从 OCR 到理解/推理的系统基准空白。</div>
     </div>
     <div>
       <div class="teaser">
         <img src="assets/teaser.jpg" alt="Teaser" />
       </div>
       <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
-        <span class="pill">AncientDoc</span>
-        <span class="pill">零样本 CCR</span>
-        <span class="pill">文档理解</span>
+        <span class="pill">Page-level OCR</span>
+        <span class="pill">Vernacular Translation</span>
+        <span class="pill">Reasoning & Knowledge QA</span>
       </div>
     </div>
   </section>
 
   <section id="abstract">
     <h2>摘要</h2>
-    <p>在此粘贴你的论文摘要。建议 4–6 句，覆盖问题背景、方法要点、核心贡献以及主要实验结论。</p>
+    <div class="card">
+      <p>中文古籍承载着跨越数千年的历史与文化知识，但传统数字化多停留在图像扫描层面，难以支撑知识挖掘与理解应用。现有文档基准以英文印刷或简体中文为主，无法全面评估 VLM 在古籍上的 OCR 与高阶理解能力。为此，我们构建 <strong>AncientDoc</strong>：面向中文古籍的首个系统化多任务基准，包含 <em>整页 OCR</em>、<em>白话翻译</em>、<em>推理问答</em>、<em>知识问答</em>、<em>语言变体问答</em> 五项任务，覆盖 14 类文献、100+ 本书、约 3,000 页图像。我们在多项指标上评测主流 VLM，并辅以与人类评分高度一致的 LLM（GPT-4o）打分作为补充，为古籍理解研究提供统一评测框架。</p>
+      <p><small class="muted">（内容依据你上传的论文草稿整理）</small></p>
+    </div>
   </section>
 
-  <section id="motivation">
-    <h2>研究动机</h2>
+  <section id="tasks">
+    <h2>任务定义</h2>
     <div class="grid2">
       <div class="card">
-        <p>从古籍文档的版式复杂、异体字众多、图像噪声显著等挑战切入，阐述为何现有方法难以泛化以及你的改进思路。</p>
+        <h3>1) Page-level OCR</h3>
+        <p>不依赖检测/切分，直接从整页提取按阅读顺序排列的完整文本；挑战包括 <em>竖排右读</em>、<em>夹注/小字</em> 与 <em>繁体/异体</em> 的稳健识别。</p>
+      </div>
+      <div class="card">
+        <h3>2) Vernacular Translation</h3>
+        <p>将古汉语转译为现代白话文；难点在于多义消歧与基于语义的断句/标点。</p>
+      </div>
+      <div class="card">
+        <h3>3) Reasoning-based QA</h3>
+        <p>围绕隐含信息进行因果/语义/事实推理，检验多步推理与上下文理解。</p>
+      </div>
+      <div class="card">
+        <h3>4) Knowledge-based QA</h3>
+        <p>回答与文本相关的客观知识问题（人名、地名、术语、史实等），考查古典知识储备与表达理解。</p>
+      </div>
+      <div class="card">
+        <h3>5) Linguistic Variant QA</h3>
+        <p>识别与分析文体、修辞与时代风格特征，评估风格理解与生成能力。</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>与其它基准的任务覆盖对比</h3>
+      <table>
+        <thead><tr><th>Task</th><th>DocVQA</th><th>TKH</th><th>MTH</th><th>OCRBench</th><th>OCRBench v2</th><th>AncientDoc</th></tr></thead>
+        <tbody>
+          <tr><td>Page-level OCR</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Vernacular Translation</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
+          <tr><td>Reasoning-based QA</td><td>✓</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Knowledge-based QA</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
+          <tr><td>Linguistic Variant QA</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
+        </tbody>
+      </table>
+      <small class="muted">（表格基于论文 Table 1 重构）</small>
+    </div>
+  </section>
+
+  <section id="dataset">
+    <h2>数据集构建</h2>
+    <div class="grid2">
+      <div class="card">
+        <p><strong>来源：</strong>主要来自哈佛图书馆古籍数字资源，覆盖多个朝代与体裁；筛选优先级：竖排繁体、包含真实退化、语义密度高且便于标注。</p>
         <ul>
-          <li>痛点 1：长尾分布与零样本字符。</li>
-          <li>痛点 2：结构/部件先验难以显式利用。</li>
-          <li>痛点 3：跨域迁移与鲁棒性不足。</li>
+          <li>覆盖 <strong>14</strong> 类古籍，<strong>100+</strong> 本书，<strong>2,973–3,000</strong> 页。</li>
+          <li>朝代分布以明（1148页）与清（778页）为主，其次为宋（540）与唐（208）。</li>
+          <li>字体风格：正楷约 <strong>97%</strong>，草书约 <strong>3%</strong>。</li>
         </ul>
       </div>
       <figure class="card">
-        <img src="assets/motivation.png" alt="Motivation" style="width:100%;border-radius:12px" />
-        <figcaption>研究动机示意图。</figcaption>
+        <img src="assets/fig2_dynasty.png" alt="Dynasty Distribution" style="width:100%">
+        <figcaption>图 2：各朝代页数分布（示意）。</figcaption>
       </figure>
     </div>
+    <div class="card" style="margin-top:16px">
+      <img src="assets/fig3_categories.png" alt="Categories Distribution" style="width:100%">
+      <figcaption>图 3：古籍 14 个类别页数分布（示意）。</figcaption>
+    </div>
   </section>
 
-  <section id="method">
-    <h2>方法 / 架构</h2>
-    <p>用 1–2 段话概述模型：例如 Swin 主干 + 多尺度融合，Token 级图文对齐，部首/结构先验注入，对比学习损失等。</p>
-    <figure class="card">
-      <img src="assets/architecture.png" alt="Architecture" style="width:100%;border-radius:12px" />
-      <figcaption>总体架构示意。</figcaption>
-    </figure>
+  <section id="metrics">
+    <h2>评测指标</h2>
     <div class="grid2">
-      <figure class="card"><img src="assets/module_a.png" alt="Module A" style="width:100%;border-radius:12px" /><figcaption>关键模块 A。</figcaption></figure>
-      <figure class="card"><img src="assets/module_b.png" alt="Module B" style="width:100%;border-radius:12px" /><figcaption>关键模块 B。</figcaption></figure>
+      <div class="card">
+        <h3>Page-level OCR</h3>
+        <ul>
+          <li>CER（字符错误率）</li>
+          <li>Char Precision / Recall / F1</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>其余四项任务</h3>
+        <ul>
+          <li>CHRF++</li>
+          <li>BERTScore (BS-F1)</li>
+          <li>LLM 打分（0–10，最终选择与人类一致性最高的 GPT-4o）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>LLM 打分与人类一致性（示意）</h3>
+      <p>我们比较 GPT-4o、Gemini、Qwen-Plus、Doubao、Qwen2.5-72B 等评分与人工评分的一致性（Pearson、Spearman、Kendall、MSE、MAE、Bias），最终选取 GPT-4o 作为主评测 LLM。</p>
     </div>
   </section>
 
   <section id="results">
-    <h2>实验结果</h2>
-    <p>简述数据集（如 HWDB、ICDAR2013、Printed、CTW、AncientDoc 等）与评价指标；展示定量对比和定性可视化。</p>
-    <div class="grid2">
-      <figure class="card"><img src="assets/quantitative.png" alt="Quantitative" style="width:100%;border-radius:12px" /><figcaption>定量结果示例。</figcaption></figure>
-      <figure class="card"><img src="assets/qualitative.png" alt="Qualitative" style="width:100%;border-radius:12px" /><figcaption>定性可视化示例。</figcaption></figure>
-    </div>
-  </section>
-
-  <section id="bibtex">
-    <h2>BibTeX</h2>
+    <h2>实验结果（节选）</h2>
     <div class="card">
-<pre><code>@article{yourkey2025ancientdoc,
-  title   = {Title of Your Ancient Document Understanding Paper},
-  author  = {Your Name and Coauthor A and Coauthor B},
-  journal = {arXiv preprint arXiv:2501.01234},
-  year    = {2025}
-}</code></pre>
+      <h3>Page-level OCR</h3>
+      <p>Gemini 2.5-Pro 在该任务上整体最佳（Char F1 ≈ 18.12，CER ≈ 32.03），Qwen2.5 系列表现稳定；小模型在 OCR 任务上有时优于超大模型。</p>
+      <img src="assets/table3_ocr.png" alt="Table 3 OCR" style="width:100%;margin-top:8px">
+      <small class="muted">（对应论文 Table 3 的文字化总结示意）</small>
     </div>
-  </section>
-</main>
-
-<footer>
-  <div class="nav" style="justify-content:space-between">
-    <div>© 2025 Your Name. 保留部分权利。</div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a href="https://github.com/" target="_blank">GitHub</a>
-      <a href="#" target="_blank">Paper</a>
-      <a href="#" target="_blank">Code</a>
+    <div class="grid2" style="margin-top:16px">
+      <div class="card">
+        <h3>Vernacular Translation</h3>
+        <p>Gemini 2.5-Pro 在 BERTScore 与 GPT-4o 打分上领先；Qwen-VL-Max / Qwen2.5-VL-72B 紧随其后。</p>
+        <img src="assets/table4_translation.png" alt="Table 4 Translation" style="width:100%">
+      </div>
+      <div class="card">
+        <h3>Reasoning-based QA</h3>
+        <p>Qwen2.5-VL-72B 取得最高 BERTScore；Qwen2.5-VL-7B 以较小规模接近大模型表现。</p>
+        <img src="assets/table5_reasoning.png" alt="Table 5 Reasoning" style="width:100%">
+      </div>
     </div>
-  </div>
-</footer>
-<script src="js/main.js"></script>
-</body>
-</html>
-
-建</h2>
-    <div class="card">
-      <p>AncientDoc 数据来源于哈佛图书馆等高质量古籍数字化资源，涵盖自战国至清的主要朝代，按照竖排繁体优先、包含真实退化现象、内容语义密度高的原则筛选，最终收录 14 类文献（如别集、楚辞类诗、诗文评、类书等）、100+ 本书，共 2973 页。</p>
-    </div>
-  </section>
-
-  <section id="results">
-    <h2>实验结果概览</h2>
-    <p>我们在五个任务上评测了 GPT-4o、Gemini、Qwen、InternVL、LLaVA 等主流开源与闭源模型，使用多指标（如 CER、Char F1、BERTScore）和 GPT-4o 打分。</p>
-    <div class="grid2">
-      <figure class="card"><img src="assets/results_ocr.png" alt="Page-level OCR Results" style="width:100%"><figcaption>Page-level OCR 结果（部分）</figcaption></figure>
-      <figure class="card"><img src="assets/results_translation.png" alt="Vernacular Translation Results" style="width:100%"><figcaption>白话翻译结果（部分）</figcaption></figure>
+    <div class="grid2" style="margin-top:16px">
+      <div class="card">
+        <h3>Knowledge-based QA</h3>
+        <p>GPT-4o 在 BERTScore 上居首；Doubao-V2 与 Gemini 2.5-Pro 在 GPT-4o 打分上表现最佳。</p>
+        <img src="assets/table6_knowledge.png" alt="Table 6 Knowledge" style="width:100%">
+      </div>
+      <div class="card">
+        <h3>Linguistic Variant QA</h3>
+        <p>GPT-4o 与 Gemini 2.5-Pro 领先；值得注意的是 InternVL2.5 系列在本任务显著优于 InternVL3 系列。</p>
+        <img src="assets/table7_variant.png" alt="Table 7 Variant" style="width:100%">
+      </div>
     </div>
   </section>
 
@@ -142,17 +186,18 @@
     <div class="card">
 <pre><code>@article{ancientdoc2025,
   title   = {Benchmarking Vision-Language Models on Chinese Ancient Documents: From OCR to Knowledge Reasoning},
-  author  = {Your Name and Coauthors},
-  journal = {arXiv preprint arXiv:xxxx.xxxxx},
+  author  = {<填写作者列表>},
+  journal = {arXiv preprint arXiv:<填写ID>},
   year    = {2025}
 }</code></pre>
+      <small class="muted">（当前论文版本为 Anonymous 提交，等公开后可补全作者与链接）</small>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="nav" style="justify-content:space-between">
-    <div>© 2025 AncientDoc Authors. Licensed under CC BY-SA 4.0.</div>
+    <div>© 2025 AncientDoc Authors. All rights reserved.</div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="#" target="_blank">Paper</a>
       <a href="#" target="_blank">Code</a>

@@ -1,1 +1,1 @@
-// Smooth scroll
+// smooth anchor scroll

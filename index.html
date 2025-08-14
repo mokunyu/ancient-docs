@@ -15,7 +15,7 @@
       <a href="#top">项目主页</a>
       <a href="#abstract">Abstract</a>
       <a href="#tasks">任务</a>
-      <a href="#dataset">Dataset</a>
+      <a href="#dataset">数据集</a>
       <a href="#metrics">评测指标</a>
       <a href="#results">Results</a>
       <a href="#bibtex">BibTeX</a>
@@ -32,10 +32,10 @@
       <h1>Benchmarking Vision-Language Models on Chinese Ancient Documents: From OCR to Knowledge Reasoning</h1>
       <div class="subtitle">我们提出 <strong>AncientDoc</strong>——首个面向中文古籍的多任务基准，覆盖 <strong>整页 OCR</strong>、<strong>白话翻译</strong>、<strong>推理问答</strong>、<strong>知识问答</strong> 与 <strong>语言变体问答</strong> 五大任务，系统评估主流 VLM 在古籍场景下从识别到理解再到知识推理的全链路能力。</div>
       <div class="badges">
-        <a class="btn" href="#" target="_blank">📄 Paper</a>
-        <a class="btn ghost" href="#" target="_blank">💻 Code</a>
-        <a class="btn ghost" href="#" target="_blank">🧾 Dataset</a>
-        <a class="btn ghost" href="#" target="_blank">🧠 Model Weights</a>
+        <a class="btn" href="#" target="_blank">📄 论文</a>
+        <a class="btn ghost" href="#" target="_blank">💻 代码</a>
+        <a class="btn ghost" href="#" target="_blank">🧾 数据集</a>
+        <a class="btn ghost" href="#" target="_blank">🧠 模型权重</a>
       </div>
       <div class="card"><strong>TL;DR：</strong> AncientDoc 覆盖 14 类古籍、100+ 本书、约 3,000 页；在五项任务上采用多指标并辅以与人类一致的 LLM 评分进行评估，填补古籍领域从 OCR 到理解/推理的系统基准空白。</div>
     </div>
@@ -55,7 +55,7 @@
     <h2>Abstract</h2>
     <div class="card">
       <p>中文古籍承载着跨越数千年的历史与文化知识，但传统数字化多停留在图像扫描层面，难以支撑知识挖掘与理解应用。现有文档基准以英文印刷或简体中文为主，无法全面评估 VLM 在古籍上的 OCR 与高阶理解能力。为此，我们构建 <strong>AncientDoc</strong>：面向中文古籍的首个系统化多任务基准，包含 <em>整页 OCR</em>、<em>白话翻译</em>、<em>推理问答</em>、<em>知识问答</em>、<em>语言变体问答</em> 五项任务，覆盖 14 类文献、100+ 本书、约 3,000 页图像。我们在多项指标上评测主流 VLM，并辅以与人类评分高度一致的 LLM（GPT-4o）打分作为补充，为古籍理解研究提供统一评测框架。</p>
-      <p><small class="muted">（内容依据你上传的Paper草稿整理）</small></p>
+      <p><small class="muted">（内容依据你上传的论文草稿整理）</small></p>
     </div>
   </section>
 
@@ -96,12 +96,12 @@
           <tr><td>Linguistic Variant QA</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
         </tbody>
       </table>
-      <small class="muted">（表格基于Paper Table 1 重构）</small>
+      <small class="muted">（表格基于论文 Table 1 重构）</small>
     </div>
   </section>
 
   <section id="dataset">
-    <h2>Dataset构建</h2>
+    <h2>数据集构建</h2>
     <div class="grid2">
       <div class="card">
         <p><strong>来源：</strong>主要来自哈佛图书馆古籍数字资源，覆盖多个朝代与体裁；筛选优先级：竖排繁体、包含真实退化、语义密度高且便于标注。</p>
@@ -153,7 +153,7 @@
       <h3>Page-level OCR</h3>
       <p>Gemini 2.5-Pro 在该任务上整体最佳（Char F1 ≈ 18.12，CER ≈ 32.03），Qwen2.5 系列表现稳定；小模型在 OCR 任务上有时优于超大模型。</p>
       <img src="assets/table3_ocr.png" alt="Table 3 OCR" style="width:100%;margin-top:8px">
-      <small class="muted">（对应Paper Table 3 的文字化总结示意）</small>
+      <small class="muted">（对应论文 Table 3 的文字化总结示意）</small>
     </div>
     <div class="grid2" style="margin-top:16px">
       <div class="card">
@@ -190,7 +190,7 @@
   journal = {arXiv preprint arXiv:<填写ID>},
   year    = {2025}
 }</code></pre>
-      <small class="muted">（当前Paper版本为 Anonymous 提交，等公开后可补全作者与链接）</small>
+      <small class="muted">（当前论文版本为 Anonymous 提交，等公开后可补全作者与链接）</small>
     </div>
   </section>
 </main>

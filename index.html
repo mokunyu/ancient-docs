@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AncientDoc – Chinese Ancient Documents Benchmark</title>
-  <meta name="description" content="AncientDoc：面向中文古籍的多任务基准，从整页OCR到知识推理，系统评估视觉-语言模型能力。" />
+  <meta name="description" content="AncientDoc: a multi-task benchmark for Chinese ancient documents, evaluating vision-language models from page-level OCR to knowledge reasoning." />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,11 +12,11 @@
   <nav class="nav">
     <div class="left">
       <div class="logo"></div>
-      <a href="#top">项目主页</a>
+      <a href="#top">Home</a>
       <a href="#abstract">Abstract</a>
-      <a href="#tasks">任务</a>
-      <a href="#dataset">数据集</a>
-      <a href="#metrics">评测指标</a>
+      <a href="#tasks">Tasks</a>
+      <a href="#dataset">Dataset</a>
+      <a href="#metrics">Metrics</a>
       <a href="#results">Results</a>
       <a href="#bibtex">BibTeX</a>
     </div>
@@ -27,21 +27,27 @@
 </header>
 
 <main id="top">
+  <!-- HERO -->
   <section class="hero">
     <div>
       <h1>Benchmarking Vision-Language Models on Chinese Ancient Documents: From OCR to Knowledge Reasoning</h1>
-      <div class="subtitle">我们提出 <strong>AncientDoc</strong>——首个面向中文古籍的多任务基准，覆盖 <strong>整页 OCR</strong>、<strong>白话翻译</strong>、<strong>推理问答</strong>、<strong>知识问答</strong> 与 <strong>语言变体问答</strong> 五大任务，系统评估主流 VLM 在古籍场景下从识别到理解再到知识推理的全链路能力。</div>
-      <div class="badges">
-        <a class="btn" href="#" target="_blank">📄 论文</a>
-        <a class="btn ghost" href="#" target="_blank">💻 代码</a>
-        <a class="btn ghost" href="#" target="_blank">🧾 数据集</a>
-        <a class="btn ghost" href="#" target="_blank">🧠 模型权重</a>
+      <div class="subtitle">
+        We present <strong>AncientDoc</strong> — a comprehensive multi-task benchmark for Chinese ancient documents. It evaluates mainstream vision-language models (VLMs) across the full pipeline from <strong>page-level OCR</strong> and <strong>vernacular translation</strong> to <strong>reasoning-based QA</strong>, <strong>knowledge-based QA</strong>, and <strong>linguistic-variant QA</strong>.
       </div>
-      <div class="card"><strong>TL;DR：</strong> AncientDoc 覆盖 14 类古籍、100+ 本书、约 3,000 页；在五项任务上采用多指标并辅以与人类一致的 LLM 评分进行评估，填补古籍领域从 OCR 到理解/推理的系统基准空白。</div>
+      <div class="badges">
+        <a class="btn" href="#" target="_blank">📄 Paper</a>
+        <a class="btn ghost" href="#" target="_blank">💻 Code</a>
+        <a class="btn ghost" href="#" target="_blank">🧾 Dataset</a>
+        <a class="btn ghost" href="#" target="_blank">🧠 Model Weights</a>
+      </div>
+      <div class="card">
+        <strong>TL;DR:</strong> AncientDoc covers <strong>14 categories</strong>, <strong>100+ books</strong>, and roughly <strong>3,000 pages</strong>. We adopt multiple metrics and an LLM-based scoring procedure aligned with human judgments to provide a unified evaluation framework from recognition to high-level understanding and knowledge reasoning.
+      </div>
     </div>
     <div>
       <div class="teaser">
-        <img src="assets/teaser.jpg" alt="Teaser" />
+        <!-- Replace with your teaser image/video -->
+        <img src="assets/teaser.jpg" alt="Teaser image" />
       </div>
       <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
         <span class="pill">Page-level OCR</span>
@@ -51,146 +57,154 @@
     </div>
   </section>
 
+  <!-- ABSTRACT -->
   <section id="abstract">
     <h2>Abstract</h2>
     <div class="card">
-      <p>中文古籍承载着跨越数千年的历史与文化知识，但传统数字化多停留在图像扫描层面，难以支撑知识挖掘与理解应用。现有文档基准以英文印刷或简体中文为主，无法全面评估 VLM 在古籍上的 OCR 与高阶理解能力。为此，我们构建 <strong>AncientDoc</strong>：面向中文古籍的首个系统化多任务基准，包含 <em>整页 OCR</em>、<em>白话翻译</em>、<em>推理问答</em>、<em>知识问答</em>、<em>语言变体问答</em> 五项任务，覆盖 14 类文献、100+ 本书、约 3,000 页图像。我们在多项指标上评测主流 VLM，并辅以与人类评分高度一致的 LLM（GPT-4o）打分作为补充，为古籍理解研究提供统一评测框架。</p>
-      <p><small class="muted">（内容依据你上传的论文草稿整理）</small></p>
+      <p>
+        Chinese ancient documents preserve knowledge across millennia. However, most digitization efforts remain at the scanned-image level, limiting knowledge discovery and machine understanding. Existing document benchmarks primarily focus on English printed materials or Simplified Chinese and cannot fully assess VLMs’ OCR and higher-level understanding capabilities in ancient-document scenarios. We introduce <strong>AncientDoc</strong>, the first systematic multi-task benchmark for Chinese ancient documents, consisting of five tasks: <em>Page-level OCR</em>, <em>Vernacular Translation</em>, <em>Reasoning-based QA</em>, <em>Knowledge-based QA</em>, and <em>Linguistic-variant QA</em>. The dataset spans 14 categories, 100+ books, and about 3,000 pages. We evaluate mainstream VLMs with multiple metrics and complement them with LLM-based scoring that correlates strongly with human assessments, offering a unified framework for future research on ancient-document understanding.
+      </p>
     </div>
   </section>
 
+  <!-- TASKS -->
   <section id="tasks">
-    <h2>任务定义</h2>
+    <h2>Tasks</h2>
     <div class="grid2">
       <div class="card">
         <h3>1) Page-level OCR</h3>
-        <p>不依赖检测/切分，直接从整页提取按阅读顺序排列的完整文本；挑战包括 <em>竖排右读</em>、<em>夹注/小字</em> 与 <em>繁体/异体</em> 的稳健识别。</p>
+        <p>Directly transcribe the entire page into reading order without explicit detection/cropping. Key challenges include <em>vertical right-to-left layouts</em>, <em>marginalia/small fonts</em>, and robust handling of <em>Traditional/variant characters</em>.</p>
       </div>
       <div class="card">
         <h3>2) Vernacular Translation</h3>
-        <p>将古汉语转译为现代白话文；难点在于多义消歧与基于语义的断句/标点。</p>
+        <p>Translate Classical Chinese into modern vernacular Chinese. Difficulties include lexical disambiguation and semantic-aware segmentation/punctuation.</p>
       </div>
       <div class="card">
         <h3>3) Reasoning-based QA</h3>
-        <p>围绕隐含信息进行因果/语义/事实推理，检验多步推理与上下文理解。</p>
+        <p>Answer questions requiring implicit reasoning (e.g., factual, causal, relational). Tests multi-step reasoning and contextual understanding.</p>
       </div>
       <div class="card">
         <h3>4) Knowledge-based QA</h3>
-        <p>回答与文本相关的客观知识问题（人名、地名、术语、史实等），考查古典知识储备与表达理解。</p>
+        <p>Answer objective knowledge questions (people, places, terms, historical facts) grounded in the text, requiring classical knowledge background.</p>
       </div>
       <div class="card">
-        <h3>5) Linguistic Variant QA</h3>
-        <p>识别与分析文体、修辞与时代风格特征，评估风格理解与生成能力。</p>
+        <h3>5) Linguistic-variant QA</h3>
+        <p>Identify and analyze stylistic, rhetorical, and genre characteristics, assessing understanding and generation with respect to linguistic variants.</p>
       </div>
     </div>
 
     <div class="card" style="margin-top:16px">
-      <h3>与其它基准的任务覆盖对比</h3>
+      <h3>Coverage vs. Prior Benchmarks</h3>
       <table>
-        <thead><tr><th>Task</th><th>DocVQA</th><th>TKH</th><th>MTH</th><th>OCRBench</th><th>OCRBench v2</th><th>AncientDoc</th></tr></thead>
+        <thead>
+          <tr><th>Task</th><th>DocVQA</th><th>TKH</th><th>MTH</th><th>OCRBench</th><th>OCRBench v2</th><th>AncientDoc</th></tr>
+        </thead>
         <tbody>
           <tr><td>Page-level OCR</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
           <tr><td>Vernacular Translation</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
           <tr><td>Reasoning-based QA</td><td>✓</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td></tr>
           <tr><td>Knowledge-based QA</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
-          <tr><td>Linguistic Variant QA</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
+          <tr><td>Linguistic-variant QA</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
         </tbody>
       </table>
-      <small class="muted">（表格基于论文 Table 1 重构）</small>
+      <small class="muted">Reconstructed summary based on the paper’s comparison.</small>
     </div>
   </section>
 
+  <!-- DATASET -->
   <section id="dataset">
-    <h2>数据集构建</h2>
+    <h2>Dataset</h2>
     <div class="grid2">
       <div class="card">
-        <p><strong>来源：</strong>主要来自哈佛图书馆古籍数字资源，覆盖多个朝代与体裁；筛选优先级：竖排繁体、包含真实退化、语义密度高且便于标注。</p>
+        <p><strong>Sources:</strong> primarily high-quality digital collections (e.g., Harvard Library). Selection criteria prioritize vertical layouts with Traditional characters, real-world degradation artifacts, and high semantic density suitable for annotation.</p>
         <ul>
-          <li>覆盖 <strong>14</strong> 类古籍，<strong>100+</strong> 本书，<strong>2,973–3,000</strong> 页。</li>
-          <li>朝代分布以明（1148页）与清（778页）为主，其次为宋（540）与唐（208）。</li>
-          <li>字体风格：正楷约 <strong>97%</strong>，草书约 <strong>3%</strong>。</li>
+          <li>Coverage: <strong>14</strong> categories, <strong>100+ books</strong>, and <strong>~3,000 pages</strong> (≈ 2,973–3,000).</li>
+          <li>Dynasty distribution (example): Ming (~1,148 pages), Qing (~778), Song (~540), Tang (~208).</li>
+          <li>Script style: Regular script ≈ <strong>97%</strong>, cursive ≈ <strong>3%</strong>.</li>
         </ul>
       </div>
       <figure class="card">
-        <img src="assets/fig2_dynasty.png" alt="Dynasty Distribution" style="width:100%">
-        <figcaption>图 2：各朝代页数分布（示意）。</figcaption>
+        <img src="assets/fig2_dynasty.png" alt="Dynasty distribution (placeholder)" style="width:100%">
+        <figcaption>Figure: page counts by dynasty (illustrative).</figcaption>
       </figure>
     </div>
     <div class="card" style="margin-top:16px">
-      <img src="assets/fig3_categories.png" alt="Categories Distribution" style="width:100%">
-      <figcaption>图 3：古籍 14 个类别页数分布（示意）。</figcaption>
+      <img src="assets/fig3_categories.png" alt="Category distribution (placeholder)" style="width:100%">
+      <figcaption>Figure: page counts by 14 document categories (illustrative).</figcaption>
     </div>
   </section>
 
+  <!-- METRICS -->
   <section id="metrics">
-    <h2>评测指标</h2>
+    <h2>Metrics</h2>
     <div class="grid2">
       <div class="card">
         <h3>Page-level OCR</h3>
         <ul>
-          <li>CER（字符错误率）</li>
-          <li>Char Precision / Recall / F1</li>
+          <li>Character Error Rate (CER)</li>
+          <li>Character Precision / Recall / F1</li>
         </ul>
       </div>
       <div class="card">
-        <h3>其余四项任务</h3>
+        <h3>Other Tasks</h3>
         <ul>
           <li>CHRF++</li>
           <li>BERTScore (BS-F1)</li>
-          <li>LLM 打分（0–10，最终选择与人类一致性最高的 GPT-4o）</li>
+          <li>LLM-based scores (0–10), selecting the LLM with the highest agreement with human ratings</li>
         </ul>
       </div>
     </div>
     <div class="card" style="margin-top:16px">
-      <h3>LLM 打分与人类一致性（示意）</h3>
-      <p>我们比较 GPT-4o、Gemini、Qwen-Plus、Doubao、Qwen2.5-72B 等评分与人工评分的一致性（Pearson、Spearman、Kendall、MSE、MAE、Bias），最终选取 GPT-4o 作为主评测 LLM。</p>
+      <h3>LLM–Human Agreement (Illustrative)</h3>
+      <p>We compare several LLM judges (e.g., GPT-4o, Gemini, Qwen-Plus, Doubao, Qwen2.5-72B) against human ratings using Pearson/Spearman/Kendall correlations, MSE/MAE, and bias, and select the judge with the best agreement.</p>
     </div>
   </section>
 
+  <!-- RESULTS -->
   <section id="results">
-    <h2>Results（节选）</h2>
+    <h2>Results (Selected)</h2>
     <div class="card">
       <h3>Page-level OCR</h3>
-      <p>Gemini 2.5-Pro 在该任务上整体最佳（Char F1 ≈ 18.12，CER ≈ 32.03），Qwen2.5 系列表现稳定；小模型在 OCR 任务上有时优于超大模型。</p>
-      <img src="assets/table3_ocr.png" alt="Table 3 OCR" style="width:100%;margin-top:8px">
-      <small class="muted">（对应论文 Table 3 的文字化总结示意）</small>
+      <p>Gemini 2.5-Pro achieves the best overall performance on this task (e.g., higher Char F1, lower CER), while Qwen2.5 is stable across settings. Smaller models can sometimes outperform much larger ones for OCR-specific tasks.</p>
+      <img src="assets/table3_ocr.png" alt="Table 3 – Page-level OCR (placeholder)" style="width:100%;margin-top:8px">
     </div>
     <div class="grid2" style="margin-top:16px">
       <div class="card">
         <h3>Vernacular Translation</h3>
-        <p>Gemini 2.5-Pro 在 BERTScore 与 GPT-4o 打分上领先；Qwen-VL-Max / Qwen2.5-VL-72B 紧随其后。</p>
-        <img src="assets/table4_translation.png" alt="Table 4 Translation" style="width:100%">
+        <p>Gemini 2.5-Pro leads in BERTScore and LLM-based ratings; Qwen-VL-Max / Qwen2.5-VL-72B follow closely.</p>
+        <img src="assets/table4_translation.png" alt="Table 4 – Vernacular Translation (placeholder)" style="width:100%">
       </div>
       <div class="card">
         <h3>Reasoning-based QA</h3>
-        <p>Qwen2.5-VL-72B 取得最高 BERTScore；Qwen2.5-VL-7B 以较小规模接近大模型表现。</p>
-        <img src="assets/table5_reasoning.png" alt="Table 5 Reasoning" style="width:100%">
+        <p>Qwen2.5-VL-72B reaches the highest BERTScore; the 7B variant approaches large-model performance with much fewer parameters.</p>
+        <img src="assets/table5_reasoning.png" alt="Table 5 – Reasoning-based QA (placeholder)" style="width:100%">
       </div>
     </div>
     <div class="grid2" style="margin-top:16px">
       <div class="card">
         <h3>Knowledge-based QA</h3>
-        <p>GPT-4o 在 BERTScore 上居首；Doubao-V2 与 Gemini 2.5-Pro 在 GPT-4o 打分上表现最佳。</p>
-        <img src="assets/table6_knowledge.png" alt="Table 6 Knowledge" style="width:100%">
+        <p>GPT-4o tops BERTScore; Doubao-V2 and Gemini 2.5-Pro perform best under LLM-based scoring.</p>
+        <img src="assets/table6_knowledge.png" alt="Table 6 – Knowledge-based QA (placeholder)" style="width:100%">
       </div>
       <div class="card">
-        <h3>Linguistic Variant QA</h3>
-        <p>GPT-4o 与 Gemini 2.5-Pro 领先；值得注意的是 InternVL2.5 系列在本任务显著优于 InternVL3 系列。</p>
-        <img src="assets/table7_variant.png" alt="Table 7 Variant" style="width:100%">
+        <h3>Linguistic-variant QA</h3>
+        <p>GPT-4o and Gemini 2.5-Pro lead this task; notably, InternVL2.5 outperforms InternVL3 variants here.</p>
+        <img src="assets/table7_variant.png" alt="Table 7 – Linguistic-variant QA (placeholder)" style="width:100%">
       </div>
     </div>
   </section>
 
+  <!-- BIBTEX -->
   <section id="bibtex">
     <h2>BibTeX</h2>
     <div class="card">
 <pre><code>@article{ancientdoc2025,
   title   = {Benchmarking Vision-Language Models on Chinese Ancient Documents: From OCR to Knowledge Reasoning},
-  author  = {<填写作者列表>},
-  journal = {arXiv preprint arXiv:<填写ID>},
+  author  = {<fill author list>},
+  journal = {arXiv preprint arXiv:<fill id>},
   year    = {2025}
 }</code></pre>
-      <small class="muted">（当前论文版本为 Anonymous 提交，等公开后可补全作者与链接）</small>
+      <small class="muted">Replace the author list and arXiv ID when public.</small>
     </div>
   </section>
 </main>
@@ -205,6 +219,7 @@
     </div>
   </div>
 </footer>
+
 <script src="js/main.js"></script>
 </body>
 </html>

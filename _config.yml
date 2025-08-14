@@ -1,0 +1,7 @@
+title: AncientDoc Project Page
+description: 古籍文档理解/零样本汉字识别 – 静态项目主页
+theme: null
+plugins: []
+markdown: kramdown
+kramdown:
+  input: GFM

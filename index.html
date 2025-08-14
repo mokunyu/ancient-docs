@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>古籍文档理解 – 项目主页</title>
+  <meta name="description" content="古籍文档理解/零样本汉字识别项目主页（可直接用于 GitHub Pages）。" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="left">
+      <div class="logo"></div>
+      <a href="#top">项目主页</a>
+      <a href="#abstract">摘要</a>
+      <a href="#motivation">动机</a>
+      <a href="#method">方法</a>
+      <a href="#results">实验</a>
+      <a href="#bibtex">BibTeX</a>
+    </div>
+    <div class="right">
+      <span class="pill">v1.0</span>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div>
+      <h1>古籍文档理解 / 零样本汉字识别（项目标题示例）</h1>
+      <div class="subtitle">一句话：用细粒度先验与图文对齐，实现对古籍字符在长尾与异体字条件下的鲁棒识别。</div>
+      <div class="badges">
+        <a class="btn" href="#" target="_blank">📄 论文</a>
+        <a class="btn ghost" href="#" target="_blank">💻 代码</a>
+        <a class="btn ghost" href="#" target="_blank">🧾 数据集</a>
+        <a class="btn ghost" href="#" target="_blank">🧠 模型权重</a>
+      </div>
+      <div class="card"><strong>TL;DR：</strong> 简洁明快地用 1–2 句总结你的方法和优势。</div>
+    </div>
+    <div>
+      <div class="teaser">
+        <img src="assets/teaser.jpg" alt="Teaser" />
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px">
+        <span class="pill">AncientDoc</span>
+        <span class="pill">零样本 CCR</span>
+        <span class="pill">文档理解</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="abstract">
+    <h2>摘要</h2>
+    <p>在此粘贴你的论文摘要。建议 4–6 句，覆盖问题背景、方法要点、核心贡献以及主要实验结论。</p>
+  </section>
+
+  <section id="motivation">
+    <h2>研究动机</h2>
+    <div class="grid2">
+      <div class="card">
+        <p>从古籍文档的版式复杂、异体字众多、图像噪声显著等挑战切入，阐述为何现有方法难以泛化以及你的改进思路。</p>
+        <ul>
+          <li>痛点 1：长尾分布与零样本字符。</li>
+          <li>痛点 2：结构/部件先验难以显式利用。</li>
+          <li>痛点 3：跨域迁移与鲁棒性不足。</li>
+        </ul>
+      </div>
+      <figure class="card">
+        <img src="assets/motivation.png" alt="Motivation" style="width:100%;border-radius:12px" />
+        <figcaption>研究动机示意图。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="method">
+    <h2>方法 / 架构</h2>
+    <p>用 1–2 段话概述模型：例如 Swin 主干 + 多尺度融合，Token 级图文对齐，部首/结构先验注入，对比学习损失等。</p>
+    <figure class="card">
+      <img src="assets/architecture.png" alt="Architecture" style="width:100%;border-radius:12px" />
+      <figcaption>总体架构示意。</figcaption>
+    </figure>
+    <div class="grid2">
+      <figure class="card"><img src="assets/module_a.png" alt="Module A" style="width:100%;border-radius:12px" /><figcaption>关键模块 A。</figcaption></figure>
+      <figure class="card"><img src="assets/module_b.png" alt="Module B" style="width:100%;border-radius:12px" /><figcaption>关键模块 B。</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="results">
+    <h2>实验结果</h2>
+    <p>简述数据集（如 HWDB、ICDAR2013、Printed、CTW、AncientDoc 等）与评价指标；展示定量对比和定性可视化。</p>
+    <div class="grid2">
+      <figure class="card"><img src="assets/quantitative.png" alt="Quantitative" style="width:100%;border-radius:12px" /><figcaption>定量结果示例。</figcaption></figure>
+      <figure class="card"><img src="assets/qualitative.png" alt="Qualitative" style="width:100%;border-radius:12px" /><figcaption>定性可视化示例。</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="bibtex">
+    <h2>BibTeX</h2>
+    <div class="card">
+<pre><code>@article{yourkey2025ancientdoc,
+  title   = {Title of Your Ancient Document Understanding Paper},
+  author  = {Your Name and Coauthor A and Coauthor B},
+  journal = {arXiv preprint arXiv:2501.01234},
+  year    = {2025}
+}</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="nav" style="justify-content:space-between">
+    <div>© 2025 Your Name. 保留部分权利。</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="https://github.com/" target="_blank">GitHub</a>
+      <a href="#" target="_blank">Paper</a>
+      <a href="#" target="_blank">Code</a>
+    </div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

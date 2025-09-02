@@ -18,7 +18,7 @@ We introduce **AncientDoc**, the **first benchmark** designed for evaluating VLM
 - **Comprehensive Evaluation:** CER, Precision/Recall/F1, CHRF++, BERTScore, and human-aligned GPT-4o scoring
 
 <p align="center">
-  <img src="teaser.png" width="700">
+  <img src="assets/teaser.png" width="700">
 </p>
 
 ---
@@ -31,8 +31,8 @@ We introduce **AncientDoc**, the **first benchmark** designed for evaluating VLM
 - **Total Size:** ~3,000 page images, with annotations across five tasks  
 
 <p align="center">
-  <img src="figures/dynasty_distribution.png" width="350">
-  <img src="figures/category_distribution.png" width="350">
+  <img src="assets/fig2_dynasty.png" width="350">
+  <img src="assets/fig3_categories.png" width="350">
 </p>
 
 ---
@@ -45,9 +45,6 @@ We introduce **AncientDoc**, the **first benchmark** designed for evaluating VLM
 4. **Knowledge-based QA** – answer factual and cultural questions from texts.  
 5. **Linguistic Variant QA** – recognize rhetorical devices, stylistic features, and literary styles.
 
-<p align="center">
-  <img src="figures/task_examples.png" width="700">
-</p>
 
 ---
 
@@ -70,20 +67,25 @@ We evaluate **open-source** (Qwen2.5-VL, InternVL, LLaVA, etc.) and **closed-sou
 - **Variant QA:** GPT-4o & Gemini2.5-Pro excel in stylistic recognition
 
 <p align="center">
-  <img src="figures/results_table.png" width="750">
+  <img src="assets/table3_ocr.png" width="750">
 </p>
 
+<p align="center">
+  <img src="assets/table4_translation.png" width="750">
+</p>
+
+<p align="center">
+  <img src="assets/table5_reasoning.png" width="750">
+</p>
+
+<p align="center">
+  <img src="assets/table6_knowledge.png" width="750">
+</p>
+
+<p align="center">
+  <img src="assets/table7_variant.png" width="750">
+</p>
 ---
-
-## ⚙️ Usage
-
-### Dataset Download
-```bash
-git clone https://github.com/your_repo/AncientDoc
-cd AncientDoc
-# Download images and annotations
-bash scripts/download_data.sh
-```
 
 ### Data Format
 Each JSONL file contains:
@@ -94,11 +96,6 @@ Each JSONL file contains:
   "question": "Please extract the text...",
   "answer": "夫天之所..."
 }
-```
-
-### Evaluation
-```bash
-python evaluate.py   --model qwen2.5-vl-7b   --task OCR   --data data/OCR.jsonl   --metrics cer char_f1
 ```
 
 ---

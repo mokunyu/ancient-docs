@@ -2,9 +2,9 @@
 
 <div align="center">
 
-[![Paper](https://img.shields.io/badge/Paper-PDF-red)](link_to_paper) 
-[![Dataset](https://huggingface.co/datasets/yuchuan123/AncientDoc)](link_to_dataset) 
-[![Model](https://img.shields.io/badge/Models-Baselines-green)](link_to_models)
+[![Paper](https://img.shields.io/badge/Paper-PDF-red)](link_to_paper)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-blue?logo=huggingface)](https://huggingface.co/datasets/yuchuan123/AncientDoc)
+[![Models](https://img.shields.io/badge/Models-Baselines-green)](link_to_models)
 
 </div>
 

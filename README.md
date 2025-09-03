@@ -69,22 +69,6 @@ We evaluate **open-source** (Qwen2.5-VL, InternVL, LLaVA, etc.) and **closed-sou
 <p align="center">
   <img src="assets/table3_ocr.png" width="750">
 </p>
-
-<p align="center">
-  <img src="assets/table4_translation.png" width="750">
-</p>
-
-<p align="center">
-  <img src="assets/table5_reasoning.png" width="750">
-</p>
-
-<p align="center">
-  <img src="assets/table6_knowledge.png" width="750">
-</p>
-
-<p align="center">
-  <img src="assets/table7_variant.png" width="750">
-</p>
 ---
 
 ### Data Format

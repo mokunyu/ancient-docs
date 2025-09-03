@@ -3,7 +3,7 @@
 <div align="center">
 
 [![Paper](https://img.shields.io/badge/Paper-PDF-red)](link_to_paper) 
-[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-blue)](link_to_dataset) 
+[![Dataset](https://huggingface.co/datasets/yuchuan123/AncientDoc)](link_to_dataset) 
 [![Model](https://img.shields.io/badge/Models-Baselines-green)](link_to_models)
 
 </div>
@@ -105,7 +105,7 @@ If you use AncientDoc in your research, please cite:
 ```bibtex
 @article{ancientdoc2025,
   title={Benchmarking Vision-Language Models on Chinese Ancient Documents: From OCR to Knowledge Reasoning},
-  author={Anonymous},
+  author={Haiyang Yu, Yuchuan Wu, Fan Shi, Lei Liao, Jinghui Lu, Xiaodong Ge, Han Wang, Minghan Zhuo, Xuecheng Wu, Xiang Fei, Hao Feng, Guozhi Tang, An-Lan Wang, Hanshen Zhu, Yangfan He, Quanhuan Liang, Liyuan Meng, ChaoFeng, Can Huang, Jingqun Tang, Bin Li},
   journal={Under Review},
   year={2025}
 }
